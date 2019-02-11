@@ -5,17 +5,19 @@ public class BanqueController {
 
     static BanqueModel banqueModel;
     static BanqueView banqueView;
+    static ViewBanqueI viewBanqueI;
 
-    public BanqueController(BanqueModel banqueModel, BanqueView banqueView) {
+    public BanqueController(BanqueModel banqueModel, BanqueView banqueView, ViewBanqueI viewBanqueI) {
         this.banqueModel = banqueModel;
         this.banqueView = banqueView;
+        this.viewBanqueI = viewBanqueI;
     }
 
     public static void init() {
 
 
         banqueModel.loadData();
-
+        viewBanqueI.initWindow();
 
         int choix;
         do {
@@ -93,6 +95,30 @@ public class BanqueController {
 
 
         } while (choix != 4);
+
+
+    }
+
+    public static boolean numeroCompteValid(int numeroCompte) {
+        return banqueModel.checkCompteIfExist(numeroCompte);
+
+    }
+
+    public static Movements getMovements(int numeroCompte) {
+        return banqueModel.getMovementsFromCompte(numeroCompte);
+    }
+
+    public static void addLigneComptable(LigneComptable ligneComptable) {
+        banqueModel.addLigneComptable(ligneComptable);
+    }
+
+    public boolean addCompte(Compte compte) {
+
+        if(!banqueModel.checkCompteIfExist(compte.getNumeroCompte())){
+            banqueModel.addCompte(compte);
+            return true;
+        }
+        return false;
 
 
     }

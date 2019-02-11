@@ -13,8 +13,14 @@ import java.util.ArrayList;
 public class BanqueView {
 
 
+
+    ViewBanqueI viewBanqueInterface;
+
+
     public BanqueView() {
     }
+
+
 
     public static int showMenu() {
 
@@ -174,7 +180,7 @@ public class BanqueView {
 
             String motif = br.readLine();
 
-            System.out.println("Lo mode de paiement \n" +
+            System.out.println("Le mode de paiement \n" +
                     "[Types posibles: CB, Cheque, Virement");
             String modeDePaiment = br.readLine();
 

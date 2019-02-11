@@ -6,7 +6,9 @@ public class Main {
 
         BanqueModel banqueModel = new BanqueModel();
         BanqueView banqueView = new BanqueView();
-        BanqueController banqueController = new BanqueController(banqueModel,banqueView);
+        ViewBanqueI viewBanqueI = new ViewBanqueI();
+        BanqueController banqueController = new BanqueController(banqueModel,banqueView,viewBanqueI);
+        viewBanqueI.setControler(banqueController);
 
         BanqueController.init();
 
