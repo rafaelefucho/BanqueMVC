@@ -14,7 +14,7 @@ public class BanqueController {
     public static void init() {
 
 
-        
+        banqueModel.loadData();
 
 
         int choix;
@@ -49,10 +49,19 @@ public class BanqueController {
                     break;
 
                 case 3:
-                    banqueView.showOptionPasDispo();
+                    LigneComptable ligneComptable = banqueView.getInfoLigneComptable();
+                    boolean answer = banqueModel.checkCompteIfExist(ligneComptable.getNumeroDeCompte());
+                    if (answer){
+                        banqueModel.addLigneComptable(ligneComptable);
+                    }
+                    else banqueView.showComptePasValide();
+
+
+//                    banqueView.showOptionPasDispo();
                     break;
 
                 case 4:
+                    banqueModel.closeConnection();
                     break;
 
                 case 5:

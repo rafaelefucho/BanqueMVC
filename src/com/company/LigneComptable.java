@@ -1,6 +1,7 @@
 package com.company;
 
-import java.util.Date;
+
+import java.sql.Date;
 
 public class LigneComptable {
 
@@ -15,6 +16,29 @@ public class LigneComptable {
         this.sommeCrediter = sommeCrediter;
         this.dateOperation = dateOperation;
         this.motifAchat = motifAchat;
+        this.modeDePaiment = modeDePaiment;
+    }
+
+    public LigneComptable() {
+    }
+
+    public void setNumeroDeCompte(int numeroDeCompte) {
+        this.numeroDeCompte = numeroDeCompte;
+    }
+
+    public void setSommeCrediter(double sommeCrediter) {
+        this.sommeCrediter = sommeCrediter;
+    }
+
+    public void setDateOperation(Date dateOperation) {
+        this.dateOperation = dateOperation;
+    }
+
+    public void setMotifAchat(String motifAchat) {
+        this.motifAchat = motifAchat;
+    }
+
+    public void setModeDePaiment(String modeDePaiment) {
         this.modeDePaiment = modeDePaiment;
     }
 

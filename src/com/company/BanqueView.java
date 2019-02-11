@@ -3,8 +3,12 @@ package com.company;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
+
+
 
 public class BanqueView {
 
@@ -122,26 +126,71 @@ public class BanqueView {
 
 
 
-        System.out.println(String.format("|%-10s|%10-s|%-10s|%-10s|%-10s|",
+        System.out.println(String.format("|%-16s|%-16s|%-16s|%-16s|%-10s|",
                 "Numero de Compte",
                 "Somme a crediter",
                 "Date Operation",
                 "Motif Achat",
                 "Mode de Paiement"));
+        System.out.println("------------------------------------------------------------------------------");
 
 
         for (LigneComptable temp:movements.movements){
 
             int numeroDeCompte = temp.getNumeroDeCompte();
-            double sommeCrediter = temp.getNumeroDeCompte();
+            double sommeCrediter = temp.getSommeCrediter();
             Date dateOperation = temp.getDateOperation();
             String motifAchat = temp.getMotifAchat();
             String modeDePaiment = temp.getModeDePaiment();
 
 
-            String line = String.format("|%-10s|%10-s|%-10s|%-10s|%-10s|",numeroDeCompte,sommeCrediter,dateOperation,motifAchat,modeDePaiment);
+            String line = String.format("|%-16s|%-16s|%-16s|%-16s|%-10s|",numeroDeCompte,sommeCrediter,dateOperation,motifAchat,modeDePaiment);
             System.out.println(line);
         }
+    }
+
+    public LigneComptable getInfoLigneComptable() {
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+
+        try {
+            System.out.flush();
+
+            System.out.print("Le numero de compte concerne (avec verification de son existence):");
+            int numeroCompte = Integer.parseInt(br.readLine());
+
+
+            System.out.print("La somme a crediter (valeur positive) ou a debiter (valeur negative)");
+            double sommeCrediter = Double.parseDouble(br.readLine());
+
+            System.out.print("La date de l'operation: (YYYY-MM-DD)");
+            String dateString = br.readLine();
+            Date date = Date.valueOf(dateString);
+
+
+            System.out.print("Le motif de l'achat ou de la vente \n" +
+                    "[Themes posibles: Salaire, Loyer, Alimentation, Divers]");
+
+            String motif = br.readLine();
+
+            System.out.println("Lo mode de paiement \n" +
+                    "[Types posibles: CB, Cheque, Virement");
+            String modeDePaiment = br.readLine();
+
+
+            LigneComptable ligneComptable = new LigneComptable(numeroCompte,sommeCrediter,date,motif,modeDePaiment);
+
+
+            return ligneComptable;
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+
     }
 }
 
