@@ -19,9 +19,9 @@ public class BanqueController {
         banqueModel.loadData();
         viewBanqueI.initWindow();
 
-        int choix;
+        int choix = 0;
         do {
-            choix = banqueView.showMenu();
+//            choix = banqueView.showMenu();
 
             switch (choix) {
                 case 1:
@@ -89,12 +89,12 @@ public class BanqueController {
 
 
                 default:
-                    banqueView.showOptionPasValid();
+//                    banqueView.showOptionPasValid();
 
             }
 
 
-        } while (choix != 4);
+        } while (choix != 0);
 
 
     }

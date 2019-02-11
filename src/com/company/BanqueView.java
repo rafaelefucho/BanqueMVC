@@ -33,16 +33,17 @@ public class BanqueView {
         System.out.println(" ");
         System.out.print("Votre choix: ");
 
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        try {
-            int choix = Integer.parseInt(br.readLine());
-            return choix;
-
-        } catch (IOException e) {
-            e.printStackTrace();
-            return -1;
-
-        }
+//        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//        try {
+//            int choix = Integer.parseInt(br.readLine());
+//            return choix;
+//
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//            return -1;
+//
+//        }
+        return 0;
     }
 
     public void showOptionPasDispo() {
